@@ -2,7 +2,9 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 /**
@@ -37,8 +39,14 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called when the order button is clicked.
      */
-    public void submitOrder(View view) {
-        displayMessage(createOrderSummary());
+    public void submitOrder(View view)
+    {
+        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+                
+        int price = calculatePrice();
+        Log.v("MainActivity", "The price is: $" + price);
+        String priceMessage = (createOrderSummary());
+        displayMessage(priceMessage);
     }
 
     /**
