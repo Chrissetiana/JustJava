@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private String createOrderSummary() {
         String priceMessage = "Name: Chrisse Tiana" +
+                "\nAdd whipped cream? " + quantity +
                 "\nQuantity: " + quantity +
                 "\nPrice: $" + calculatePrice() +
                 "\nThank you!";
@@ -68,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + number);
     }
 
+    /**
+     * This method displays the message per order
+     */
     private void displayMessage(String message) {
         TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
