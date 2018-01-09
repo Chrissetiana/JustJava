@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
 
         // Figure out if the user wants chocolate topping
-        CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckbox.isChecked();
 
         int price = calculatePrice();
