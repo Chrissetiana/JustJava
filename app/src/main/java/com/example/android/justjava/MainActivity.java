@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view)
     {
-        EditText name = (EditText) findViewById(R.id.name_field);
+        // Get user name
+        EditText text = (EditText) findViewById(R.id.name_field);
+        String name = text.getText().toString();
 
         // Figure out if the user wants whipped cream topping
         CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         boolean hasChocolate = chocolateCheckbox.isChecked();
 
         int price = calculatePrice();
-        String priceMessage = (createOrderSummary(price, hasWhippedCream, hasChocolate));
+        String priceMessage = (createOrderSummary(name, price, hasWhippedCream, hasChocolate));
         displayMessage(priceMessage);
     }
 
@@ -68,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method displays the order summary
      */
-    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate) {
-        String priceMessage = "Name: Chrisse Tiana" +
+    private String createOrderSummary(String name, int price, boolean addWhippedCream, boolean addChocolate) {
+        String priceMessage = "Name: " + name +
                 "\nAdd whipped cream? " + addWhippedCream +
                 "\nAdd chocolate? " + addChocolate +
                 "\nQuantity: " + quantity +
