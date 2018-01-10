@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Just Java</string>
+    <string name="Name">Name</string>
+    <!-- Header text for the list of toppings [CHAR LIMIT=20] -->
+    <string name="Toppings">Toppings</string>
+    <string name="WhippedCream">Whipped Cream</string>
+    <string name="Chocolate">Chocolate</string>
+    <string name="Quantity">Quantity</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="number">0</string>
+    <string name="Order">Order</string>
 </resources>

@@ -72,12 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         // Only email apps should handle this
-         intent.setData(Uri.parse("mailto:"));
-         intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
-         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
-         if(intent.resolveActivity(getPackageManager()) != null) {
-             startActivity(intent);
-         }
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+        intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     /**
