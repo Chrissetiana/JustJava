@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
@@ -24,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked
      */
     public void increment(View view) {
+        if(quantity == 100){
+            // Show an error message as toast
+            Toast.makeText(this, "You cannot have more than 100 cup of coffee", Toast.LENGTH_SHORT).show();
+            // Exit method early because there's nothing left to do
+            return;
+        }
         quantity = quantity + 1;
         displayQuantity(quantity);
     }
@@ -32,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked
      */
     public void decrement(View view) {
+        if(quantity == 1){
+            // Show an error message as toast
+            Toast.makeText(this, "You cannot have less than 1 cup of coffee", Toast.LENGTH_SHORT).show();
+            // Exit method early because there's nothing left to do
+            return;
+        }
         quantity = quantity - 1;
         displayQuantity(quantity);
     }
@@ -39,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method is called when the order button is clicked.
      */
-    public void submitOrder(View view)
-    {
+    public void submitOrder(View view) {
         // Get user name
         EditText text = (EditText) findViewById(R.id.name_field);
         String name = text.getText().toString();
@@ -53,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckbox.isChecked();
 
-        int price = calculatePrice();
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
         String priceMessage = (createOrderSummary(name, price, hasWhippedCream, hasChocolate));
         displayMessage(priceMessage);
     }
@@ -61,9 +73,21 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Calculates the price of the order based on the current quantity.
      */
-    private int calculatePrice() {
-        int price = quantity * 5;
-        return price;
+    private int calculatePrice(boolean addWhippedCream, boolean addChocolate) {
+        int basePrice = 5;
+
+        // Add $1 if the user wants whipped cream
+        if (addWhippedCream) {
+            basePrice += 1;
+        }
+
+        // Add $2 if the user wants chocolate
+        if (addChocolate) {
+            basePrice += 2;
+        }
+
+        // Calculate the total order price by multiplying by quantity
+        return quantity * basePrice;
     }
 
     /**
