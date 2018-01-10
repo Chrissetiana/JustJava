@@ -1,5 +1,7 @@
 package com.example.android.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the plus button is clicked
      */
     public void increment(View view) {
-        if(quantity == 100){
+        if (quantity == 100) {
             // Show an error message as toast
             Toast.makeText(this, "You cannot have more than 100 cup of coffee", Toast.LENGTH_SHORT).show();
             // Exit method early because there's nothing left to do
@@ -39,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked
      */
     public void decrement(View view) {
-        if(quantity == 1){
+        if (quantity == 1) {
             // Show an error message as toast
             Toast.makeText(this, "You cannot have less than 1 cup of coffee", Toast.LENGTH_SHORT).show();
             // Exit method early because there's nothing left to do
@@ -67,7 +69,15 @@ public class MainActivity extends AppCompatActivity {
 
         int price = calculatePrice(hasWhippedCream, hasChocolate);
         String priceMessage = (createOrderSummary(name, price, hasWhippedCream, hasChocolate));
-        displayMessage(priceMessage);
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        // Only email apps should handle this
+         intent.setData(Uri.parse("mailto:"));
+         intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + name);
+         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
+         if(intent.resolveActivity(getPackageManager()) != null) {
+             startActivity(intent);
+         }
     }
 
     /**
@@ -109,13 +119,5 @@ public class MainActivity extends AppCompatActivity {
     private void displayQuantity(int number) {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
-    }
-
-    /**
-     * This method displays the message per order
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 }
