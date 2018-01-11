@@ -56,15 +56,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void submitOrder(View view) {
         // Get user name
-        EditText text = (EditText) findViewById(R.id.name_field);
+        EditText text = findViewById(R.id.name_field);
         String name = text.getText().toString();
 
         // Figure out if the user wants whipped cream topping
-        CheckBox whippedCreamCheckbox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        CheckBox whippedCreamCheckbox = findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckbox.isChecked();
 
         // Figure out if the user wants chocolate topping
-        CheckBox chocolateCheckbox = (CheckBox) findViewById(R.id.chocolate_checkbox);
+        CheckBox chocolateCheckbox = findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckbox.isChecked();
 
         int price = calculatePrice(hasWhippedCream, hasChocolate);
@@ -112,21 +112,20 @@ public class MainActivity extends AppCompatActivity {
                 "\n" + getString(R.string.thank_you);
         return priceMessage;
     }
-    /**
-    *  getString(R.string.order_summary_name, name)
-    *  getString(R.string.order_summary_whipped_cream, addWhippedCream)
-    *  getString(R.string.order_summary_chocolate, addChocolate)
-    *  getString(R.string.order_summary_quantity, quantity)
-    *  getString(R.string.order_summary_price,
-     *  NumberFormat.getCurrencyInstance().format(price))
-     * getString(R..string.thank_you)
-     */
+
+    /*getString(R.string.order_summary_name, name)
+    getString(R.string.order_summary_whipped_cream, addWhippedCream)
+    getString(R.string.order_summary_chocolate, addChocolate)
+    getString(R.string.order_summary_quantity, quantity)
+    getString(R.string.order_summary_price,
+     NumberFormat.getCurrencyInstance().format(price))
+    getString(R..string.thank_you)*/
 
     /**
      * This method displays the given quantity value on the screen.
      */
     private void displayQuantity(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
 }
