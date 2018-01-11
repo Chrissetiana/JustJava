@@ -112,6 +112,15 @@ public class MainActivity extends AppCompatActivity {
                 "\n" + getString(R.string.thank_you);
         return priceMessage;
     }
+    /**
+    *  getString(R.string.order_summary_name, name)
+    *  getString(R.string.order_summary_whipped_cream, addWhippedCream)
+    *  getString(R.string.order_summary_chocolate, addChocolate)
+    *  getString(R.string.order_summary_quantity, quantity)
+    *  getString(R.string.order_summary_price,
+     *  NumberFormat.getCurrencyInstance().format(price))
+     * getString(R..string.thank_you)
+     */
 
     /**
      * This method displays the given quantity value on the screen.
