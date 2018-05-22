@@ -1,4 +1,4 @@
-package com.example.android.justjava;
+package com.chrissetiana.android.justjava;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

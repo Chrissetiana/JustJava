@@ -1,4 +1,4 @@
-package com.example.android.justjava;
+package com.chrissetiana.android.justjava;
 
 import org.junit.Test;
 
