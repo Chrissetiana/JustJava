@@ -1,4 +1,4 @@
-package com.chrissetiana.android.justjava;
+package com.chrissetiana.justjava;
 
 import android.content.Intent;
 import android.net.Uri;
